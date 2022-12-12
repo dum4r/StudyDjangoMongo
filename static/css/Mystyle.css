@@ -1,0 +1,580 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: #202020;
+  font-size: 20px;
+  -webkit-font-smoothing : none;  
+  height: 100%;
+} 
+
+h1 {
+ color: white;
+ font-size: xx-large;
+}
+
+.hidden {
+  opacity: 0;
+}
+#lblCargando{
+  color: white;
+  font-size: 20px;
+}
+
+#loader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+.preloader{
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+}
+.preloader img {
+  width: 250px; height: 250px;
+  background-size: contain;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* parallax w3 school */
+.parallax {
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* FAB https://codepen.io/sashatran/pen/pRpmWG */
+.conFab2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.conFab {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#toggle {
+  -webkit-appearance: none;
+}
+
+.buttonFab {
+  position: absolute;
+  z-index: 999;
+  width: 43px;
+  height: 43px;
+  background: #202020;
+  border-radius: 0%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -12px;
+}
+.buttonFab:before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: #74c54f;
+  transform: rotate(90deg);
+  transition: all 0.4s ease;
+}
+.buttonFab:after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: #74c54f;
+  transition: all 0.4s ease;
+}
+
+.navFab {
+  font-size: larger;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  background: #202020;
+  width: 100%;
+  transform: translateY(0%);
+  box-shadow: 2px 3px 10px 0 rgba(81, 81, 81, 0.1);
+  /* border: 1px solid #e4e4e4; */
+  padding: 10px;
+}
+.navFab ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.navFab a {
+  text-align: center;
+  margin: 20px 0;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 25px;
+}
+.navFab a:hover {
+  color: #ed1c6f;
+}
+
+#toggle:checked ~ .navFab {
+  opacity: 1;
+  transform: translateY(10%);
+}
+
+#toggle:checked ~ .buttonFab:before {
+  transform: rotate(225deg);
+}
+
+#toggle:checked ~ .buttonFab:after {
+  transform: rotate(135deg);
+}
+
+@media (max-width: 640px) {
+  .conFab {
+    width: 100%;
+  }
+}
+
+/* end FAB*/
+
+#divh1Text{
+  float: right;
+}
+
+#h1Text{
+  background-color: #2020208b;
+  padding: 5px;
+  position: absolute;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Contact Form https://codepen.io/krisantuswanandi/pen/KxrgeZ */
+.background {
+  padding-top: 30px;
+  display: flex;
+  min-height: 100vh;
+}
+
+.screen {
+  position: relative;
+  background: #202020;
+  /* border-radius: 15px; */
+}
+
+.screen:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  /* border-radius: 15px; */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+  z-index: -1;
+}
+
+.screen-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #4d4d4f;
+}
+
+.screen-header-left {
+  margin-right: auto;
+}
+
+.screen-header-button {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 3px;
+  background: white;
+}
+
+.screen-header-button.close {
+  background: #ed1c6f;
+}
+
+.screen-header-button.maximize {
+  background: #e8e925;
+}
+
+.screen-header-button.minimize {
+  background: #74c54f;
+}
+
+.screen-header-right {
+  display: flex;
+}
+
+.screen-header-ellipsis {
+  width: 3px;
+  height: 3px;
+  margin-left: 2px;
+  background: #999;
+}
+
+.screen-body {
+  display: flex;
+}
+
+.screen-body-item {
+  flex: 1;
+  padding: 50px;
+}
+
+.screen-body-item.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #ea1d6f;
+  font-size: 26px;
+}
+
+.app-title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 25px;
+  height: 4px;
+  background: #ea1d6f;
+}
+
+.app-contact {
+  margin-top: auto;
+  font-size: 12px;
+  color: #888;
+}
+
+.app-form-group {
+  margin-bottom: 15px;
+}
+
+.app-form-group.message {
+  margin-top: 40px;
+}
+
+.app-form-group.buttons {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.app-form-control {
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid rgb(25, 25, 25);
+  color: #ddd;
+  font-size: 14px;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.app-form-control::placeholder {
+  color: #666;
+}
+
+.app-form-control:focus {
+  border-bottom-color: #ddd;
+}
+
+.app-form-button {
+  background: none;
+  border: none;
+  color: #ea1d6f;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.app-form-button:hover {
+  color: #b9134f;
+}
+
+.credits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: #ffa4bd;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.credits-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.dribbble {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+@media screen and (max-width: 520px) {
+  .screen-body {
+    flex-direction: column;
+  }
+
+  .screen-body-item.left {
+    margin-bottom: 30px;
+  }
+
+  .app-title {
+    flex-direction: row;
+  }
+
+  .app-title span {
+    margin-right: 12px;
+  }
+
+  .app-title:after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .screen-body {
+    padding: 40px;
+  }
+
+  .screen-body-item {
+    padding: 0;
+  }
+}
+
+
+/* secAbout */
+#secAbout{
+
+}
+#imgPerfil{
+  border-color: #050505;
+  border: 4px solid;
+}
+
+.gradientColor {
+  font-size: 25px;
+  background: conic-gradient(
+    hsl(101, 100%, 60%),
+    hsl(200, 100%, 60%), 
+    hsl(101, 100%, 60%)
+  ) fixed;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
+
+
+
+/* carousel */
+.containerCarrusel {
+  position: relative;
+  width: 320px;
+  height: 300px;
+  margin: 100px auto 0 auto;
+  perspective: 2000px;
+}
+
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; 
+  animation: rotate360 25s infinite forwards linear;
+}
+
+.carousel__face { 
+  position: absolute;
+  width: 100%;
+  height: 187px;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  background-size: cover;
+  box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
+  display: flex;
+}
+
+.carousel__face > a {
+  text-decoration: none;
+  color: white;
+  margin: auto;
+  font-size: 2rem;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+
+
+/* Projects https://codepen.io/saviomartin/pen/LYNgqKW */
+
+
+.containerCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 40px 0;
+}
+
+.containerCard .card {
+  position: relative;
+  min-width: 320px;
+  height: 440px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  /* border-radius: 15px; */
+  margin: 30px;
+  transition: 0.5s;
+}
+
+.containerCard .card:nth-child(1) .box .content a {
+  background: #2196f3;
+}
+
+.containerCard .card:nth-child(2) .box .content a {
+  background: #e91e63;
+}
+
+.containerCard .card:nth-child(3) .box .content a {
+  background: #23c186;
+}
+
+.containerCard .card .box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #2a2b2f;
+  /* border-radius: 15px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.containerCard .card .box:hover {
+  transform: translateY(-50px);
+}
+
+.containerCard .card .box:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.containerCard .card .box .content {
+  padding: 20px;
+  text-align: center;
+}
+
+.containerCard .card .box .content h2 {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.containerCard .card .box .content h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  z-index: 1;
+  transition: 0.5s;
+  margin-bottom: 15px;
+}
+
+.containerCard .card .box .content p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.containerCard .card .box .content a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: black;
+  /* border-radius: 5px; */
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+.containerCard .card .box .content a:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  color: #000;
+}

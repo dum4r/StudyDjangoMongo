@@ -1,0 +1,163 @@
+{% if about != nil %}
+<style>
+  @import url('{{ fontUrl }}');
+  body{
+    font-family:'{{ fontname }}',sans-serif;
+  }
+  .parallax {
+    background-image: url("{{ about.urlbg }}");
+  }
+</style>
+<script type="text/javascript">
+  var name="{{about.name}}";
+  {% if messages %}
+    {% for message in messages%}
+      alert('{{ message }}')
+    {% endfor %}
+  {% endif %}
+</script>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300"> -->
+{% load static %}
+<title>Portafolio {{ about.name }}</title>
+<link rel="stylesheet" href="{% static 'css/Mystyle.css' %}">
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<script type="text/javascript" src="{% static 'js/Myjs.js' %}"></script>
+
+  <div id="loader">
+    <div class="preloader">
+      <img src="https://i.imgur.com/LruOwgk.gif" border="0"><br>
+      <h1 id="lblCargando">Cargando</h1>
+    </div>
+    <div class="loadBar">
+      <div id="progress"></div>
+    </div>
+  </div>
+  <div id="page" style="visibility: hidden;">
+    <div class="parallax conFab2">
+      <div id="divh1Text">
+        <h1 id="h1Text"><span style="color: #ed1c6f;">>></span></h1>
+      </div>
+      <div class="conFab">
+        <input type="checkbox" id="toggle"/>
+        <label class="buttonFab" for="toggle"></label>
+        <nav class="navFab">
+          <ul>
+            <a href="#secAbout">Sobre mi</a>
+            <a href="#secPro">Proyectos</a>
+            <a href="#secExp">Experiencia</a>
+            <a href="#secContact">Contacto</a>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <section class="container" id="secAbout">
+      <br/>
+      <div class="row">
+        <div class="col m12 s12 l4">
+          <center>
+            <img src="{{about.urlimga}}" id="imgPerfil">
+          </center>
+        </div>
+        <div class="col m12 s12 l8">
+          <h1><span style="color: #e8e925;">{{ about.office|slice:":1" }}</span>{{ about.office|slice:"1:" }}</h1>
+          <p class="gradientColor">{{about.description}}</p>
+        </div>
+      </div>
+    </section>
+    <div class="parallax"></div>
+    <section class="container" id="secPro">
+      <center><h1><span style="color: #ed1c6f;">P</span>royectos</h1></center>
+      <div class="containerCard">
+        {% for project in projects %}
+          <div class="card">
+            <div class="box">
+              <div class="content">
+                <h2>{{ forloop.counter }}</h2>
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                <a href="{{ project.urlimg }}">Leer mas</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    <div class="parallax"></div>
+    <section class="container" id="secExp">
+      <center><h1><span style="color: #74c54f;">E</span>xperiencias</h1></center>
+      <div class="containerCarrusel">
+        <div class="carousel">
+          {% for experience in experiences %}
+            {% widthratio forloop.counter0 1 nexperiences as varwidth %}
+            <div class="carousel__face" style="
+              background-image:url('{{ experience.urlimg }}');
+              transform: rotateY({{ varwidth }}deg) translateZ(450px);
+            ">
+              <a href="{{ experience.url }}" target="_blank">{{ experience.company }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <div class="parallax"></div>
+    <section class="parallax" id="secContact">
+      <div class="background container">
+        <div class="container">
+          <div class="screen">
+            <div class="screen-header">
+              <div class="screen-header-left">
+                <div class="screen-header-button close"></div>
+                <div class="screen-header-button maximize"></div>
+                <div class="screen-header-button minimize"></div>
+              </div>
+              <div class="screen-header-right">
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+              </div>
+            </div>
+            <div class="screen-body">
+              <div class="screen-body-item left">
+                <div class="app-title">
+                  <span>CONTACTO</span>
+                </div>
+                <div class="app-contact">Wp Info: +57 {{ about.number }}<br>Correo: {{ about.email }}</div>
+              </div>
+              <div class="screen-body-item">
+                <form method="POST" action="contact">
+                {% csrf_token %}
+                <input name="id" style="display: none" value="{{ about.id }}">
+                <input name="email2" style="display: none" value="{{ about.email }}">
+                <div class="app-form">
+                  <div class="app-form-group">
+                    <input class="app-form-control" name="name" placeholder="Nombre">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control" name="email" placeholder="Correo">
+                  </div>
+                  <div class="app-form-group">
+                    <input name="cel" class="app-form-control" placeholder="Número">
+                  </div>
+                  <div class="app-form-group message">
+                    <input name="message" class="app-form-control" placeholder="Mensage">
+                  </div>
+                  <div class="app-form-group buttons">
+                    <button class="app-form-button">ENVIAR</button>
+                  </div>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </section>
+  </div>
+{% else %}
+<p>No se encontro CV</p>
+{% endif %}
